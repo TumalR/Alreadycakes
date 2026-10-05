@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@alreadycakes - ¡Ganaste 15% OFF!</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Pixelated Minecraft Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Hoja de Estilos Personalizada -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-green-600 selection:text-white">
+
+    <header class="dirt-header text-white p-4 sticky top-0 z-40 shadow-2xl">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4">
+            <!-- Brand Info -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 bg-green-900 border-2 border-black flex items-center justify-center rounded text-3xl shadow-md">
+                    🎂
+                </div>
+                <div>
+                    <h1 class="Minecraft text-xl sm:text-2xl text-yellow-300 drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
+                        @alreadycakes
+                    </h1>
+                    <p class="text-green-300 text-lg tracking-wide font-bold">★ REPOSTERIA CASERA ★</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-3xl mx-auto p-4 flex-grow w-full space-y-8 my-6">
+
+        <!-- Banner Principal: Recompensa QR 15% Descuento & Cronómetro 24h -->
+        <section class="mc-panel-dark p-6 sm:p-10 text-center relative overflow-hidden">
+            <div class="inline-block bg-yellow-400 text-black font-pixel text-sm sm:text-base px-5 py-2 mb-4 uppercase tracking-widest border-2 border-black shadow-md font-bold">
+             ¡CUPÓN DESBLOQUEADO POR ESCANEAR! 
+            </div> 
+
+            <h2 class="font-pixel text-2xl sm:text-4xl text-yellow-300 mb-4 leading-relaxed drop-shadow-[3px_3px_0_#000]">
+                ¡FELICIDADES!
+            </h2>
+
+            <p class="text-2xl sm:text-3xl text-green-400 font-bold mb-4">
+               Te ganaste un:
+             </p>
+             <div class="font-pixel text-4xl sm:text-6xl text-amber-400 animate-bounce drop-shadow-[4px_4px_0_#000] leading-tight">
+             15% DE DESCUENTO
+             </div>
+                <p class="text-xl text-gray-200">
+                    válido para tu próxima compra de 2 productos o mas en <strong class="text-yellow-300">@alreadycakes</strong>.
+                </p>
+
+                <!-- Cronómetro de 24 Horas -->
+                <div class="pt-4 border-t border-green-800">
+                    <span class="font-pixel text-xs text-red-400 block mb-2 uppercase tracking-wider">
+                        ⏳ TIEMPO RESTANTE PARA CANJEAR TU OFERTA:
+                    </span>
+                    <div class="flex justify-center items-center gap-2 sm:gap-4 font-pixel text-2xl sm:text-4xl text-yellow-300 bg-black/90 p-3 border-2 border-red-600">
+                        <div class="flex flex-col items-center">
+                            <span id="timerHours">24</span>
+                            <span class="text-[10px] text-gray-400 font-sans mt-1">HORAS</span>
+                        </div>
+                        <span>:</span>
+                        <div class="flex flex-col items-center">
+                            <span id="timerMinutes">00</span>
+                            <span class="text-[10px] text-gray-400 font-sans mt-1">MIN</span>
+                        </div>
+                        <span>:</span>
+                        <div class="flex flex-col items-center">
+                            <span id="timerSeconds">00</span>
+                            <span class="text-[10px] text-gray-400 font-sans mt-1">SEG</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Código de Cupón y Botón para Copiar -->
+            <div class="mt-6 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <div class="slot px-6 py-3 text-center min-w-[220px]">
+                    <span class="text-xs text-gray-400 block font-pixel">CÓDIGO DE CUPÓN:</span>
+                    <span id="couponCode" class="font-pixel text-xl sm:text-2xl text-yellow-400 tracking-wider">CRAFTCAKE15</span>
+                </div>
+
+                <button onclick="copyCoupon()" class="mc-button mc-button-gold px-6 py-3 font-pixel text-xs sm:text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-copy"></i>
+                    <span>COPIAR CÓDIGO</span>
+                </button>
+            </div>
+
+            <p class="text-sm text-yellow-200/90 mt-6">
+                💡 Toca el botón de WhatsApp o Instagram abajo para realizar tu pedido usando directamente tu cupón del 15%.
+            </p>
+        </section>
+
+        <section class="mc-panel-dark p-6 sm:p-8 text-center space-y-6">
+            <h3 class="font-pixel text-xl sm:text-2xl text-yellow-300">
+                📲 RECLAMA TU DESCUENTO AQUÍ
+            </h3>
+            <p class="text-lg text-gray-200 max-w-lg mx-auto">
+                Haz tu pedido directamente por WhatsApp o escríbenos a nuestro Instagram oficial para cotizar tu postre.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+                <!-- WhatsApp -->
+                <button onclick="openWhatsApp()" class="mc-button mc-button-green px-6 py-4 font-pixel text-sm flex items-center justify-center gap-3 w-full sm:w-auto">
+                    <i class="fab fa-whatsapp text-2xl text-green-300"></i>
+                    <span>PEDIR POR WHATSAPP CON 15% OFF</span>
+                </button>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/alreadycakes/" target="_blank" class="mc-button px-6 py-4 font-pixel text-sm flex items-center justify-center gap-3 bg-gradient-to-r from-purple-800 to-pink-800 border-pink-400 w-full sm:w-auto no-underline">
+                    <i class="fab fa-instagram text-2xl text-pink-300"></i>
+                    <span>INSTAGRAM @alreadycakes</span>
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dirt-header text-center p-6 text-yellow-200 mt-10">
+        <p class="font-pixel text-xs sm:text-sm mb-2">
+            © 2026 @alreadycakes - REPOSTERIA CASERA
+        </p>
+        <p class="text-sm text-green-200/90">
+            ¡Gracias por escanear nuestro código Creeper!
+        </p>
+    </footer>
+
+    <!-- Notification Toast -->
+    <div id="toast" class="toast font-pixel text-xs">
+        ¡Acción realizada! ✨
+    </div>
+
+    <script>
+        let whatsappPhone = "573248662087";
+
+        window.onload = function() {
+            const savedPhone = localStorage.getItem('alreadycakes_phone');
+            if (savedPhone) {
+                whatsappPhone = savedPhone;
+                const phoneField = document.getElementById('phoneInput');
+                if (phoneField) phoneField.value = savedPhone;
+            }
+
+            init24HourTimer();
+        };
+
+        function init24HourTimer() {
+            const STORAGE_KEY = 'alreadycakes_timer_end';
+            let endTime = localStorage.getItem(STORAGE_KEY);
+
+            if (!endTime) {
+                endTime = Date.now() + (24 * 60 * 60 * 1000);
+                localStorage.setItem(STORAGE_KEY, endTime);
+            } else {
+                endTime = parseInt(endTime, 10);
+            }
+
+            function updateTimerDisplay() {
+                const now = Date.now();
+                const remainingTime = endTime - now;
+
+                if (remainingTime <= 0) {
+                    document.getElementById('timerHours').innerText = "00";
+                    document.getElementById('timerMinutes').innerText = "00";
+                    document.getElementById('timerSeconds').innerText = "00";
+                    return;
+                }
+
+                const hours = Math.floor((remainingTime / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((remainingTime / (1000 * 60)) % 60);
+                const seconds = Math.floor((remainingTime / 1000) % 60);
+
+                document.getElementById('timerHours').innerText = hours < 10 ? '0' + hours : hours;
+                document.getElementById('timerMinutes').innerText = minutes < 10 ? '0' + minutes : minutes;
+                document.getElementById('timerSeconds').innerText = seconds < 10 ? '0' + seconds : seconds;
+            }
+
+            updateTimerDisplay();
+            setInterval(updateTimerDisplay, 1000);
+        }
+
+
+        function openWhatsApp() {
+            const message = `Hola @alreadycakes, acabo de escanear el QR y quiero solicitar mi pedido usando mi cupón del *15% DE DESCUENTO (CRAFTCAKE15)*.`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappPhone}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
+        function copyCoupon() {
+            const code = document.getElementById('couponCode').innerText;
+            const tempInput = document.createElement("input");
+            tempInput.value = code;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand("copy");
+            document.body.removeChild(tempInput);
+
+            showToast("¡Cupón 'CRAFTCAKE15' copiado! 🎁");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById("toast");
+            toast.innerText = message;
+            toast.className = "toast show";
+            setTimeout(function(){ 
+                toast.className = toast.className.replace("show", ""); 
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
